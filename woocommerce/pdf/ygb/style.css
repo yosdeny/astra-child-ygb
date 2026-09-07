@@ -1,0 +1,164 @@
+/* =====================================================
+   Estilos de factura PDF - formato SERVI Gloriari
+   ===================================================== */
+
+@page {
+	margin: 0.8cm;
+}
+
+body {
+	font-family: 'DejaVu Sans', Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	color: #222;
+	margin: 0;
+	padding: 0;
+	background: #f5f6f7;
+}
+
+.page {
+	background: #ffffff;
+	border: 1px solid #e3e3e3;
+	padding: 1cm 1cm 1.2cm;
+}
+
+/* ---------- Cabecera ---------- */
+table.head {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.head td {
+	vertical-align: top;
+}
+
+/* Celda izquierda = mitad de la factura */
+table.head td.head-left {
+	width: 50%;
+}
+
+table.head td.head-right {
+	text-align: right;
+	width: 50%;
+}
+
+/* El logo ocupa hasta la mitad del ancho de la factura.
+   Si se ve pixelado al estirar, cambia "width: 100%" por "max-width: 100%". */
+.shop-logo img {
+	width: 100%;
+}
+
+.shop-name {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 8px;
+	color: #1a7f37;
+}
+
+/* Nombre de la tienda y líneas de dirección (ciudad, país, etc.)
+   tomadas de los Ajustes de visualización del plugin PDF */
+.shop-name-text,
+.shop-store-line {
+	font-size: 10px;
+	line-height: 1.5;
+	color: #333;
+	margin-top: 4px;
+}
+
+.shop-name-text {
+	font-weight: bold;
+}
+
+.document-title {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+	color: #000;
+	letter-spacing: 1px;
+}
+
+.invoice-number {
+	margin-top: 6px;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000;
+}
+
+.invoice-date {
+	margin-top: 3px;
+	font-size: 9px;
+	color: #888;
+}
+
+/* ---------- Datos de facturación ---------- */
+table.billing-details {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 28px 0 30px;
+}
+
+table.billing-details th {
+	width: 24%;
+	text-align: left;
+	font-weight: bold;
+	color: #111;
+	padding: 5px 10px 5px 8px;
+	vertical-align: top;
+}
+
+table.billing-details td {
+	padding: 5px 8px;
+	color: #333;
+}
+
+/* ---------- Tabla de productos ---------- */
+table.order-data {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.order-data thead th {
+	background: #f2f2f2;
+	color: #111;
+	font-weight: bold;
+	text-align: left;
+	padding: 8px 10px;
+	border: 1px solid #dddddd;
+	font-size: 10px;
+}
+
+table.order-data tbody td {
+	padding: 8px 10px;
+	border: 1px solid #dddddd;
+	color: #333;
+}
+
+table.order-data th.quantity,
+table.order-data td.quantity {
+	width: 18%;
+}
+
+table.order-data th.price,
+table.order-data td.price {
+	width: 20%;
+}
+
+table.order-data th.total,
+table.order-data td.total {
+	width: 22%;
+}
+
+table.order-data tfoot td {
+	border: 1px solid #dddddd;
+	padding: 8px 10px;
+}
+
+.total-label {
+	text-align: right;
+	font-weight: bold;
+	color: #111;
+}
+
+.total-value {
+	font-weight: bold;
+	color: #111;
+}
