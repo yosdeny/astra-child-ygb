@@ -49,6 +49,10 @@ $billing_rows = array(
 /* La fila "Recogida" solo se añade si hay combustibles en la factura */
 if ( $has_combustibles ) {
 	$billing_rows[ __( 'Recogida:', 'astra' ) ] = __( 'Servi Gloriari. Circunvalación Sur Extremo Oeste, municipio y provincia de Ciego de Ávila', 'astra' );
+}
+
+/* La nota se muestra solo si es PreFactura (pedido en estados iniciales) */
+if ( $is_pre_invoice ) {
 	$billing_rows[ __( 'Nota:', 'astra' ) ] = __( '¡Tu pedido está en proceso de confirmación de pago!', 'astra' );
 }
 ?>
