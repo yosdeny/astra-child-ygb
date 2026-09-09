@@ -3,7 +3,7 @@ Contributors: yosdeny
 Tags: custom-menu,custom-logo,entertainment,one-column,two-columns,left-sidebar,e-commerce,right-sidebar,custom-colors,editor-style,featured-images,full-width-template,microformats,post-formats,rtl-language-support,theme-options,threaded-comments,translation-ready,blog
 Requires at least: 7.0
 Tested up to: 7.1
-Stable tag: 5.5.0
+Stable tag: 5.5.1
 Requires PHP: 8.0
 Tested PHP: 8.2
 License: GPLv2 or later
@@ -23,11 +23,19 @@ Astra Child theme based on the popular Astra parent theme. Lightning-fast and hi
 
 == Changelog ==
 
+= 5.5.1 =
+* Modified WooCommerce completed order email subject to: "¡Tu pedido en {site_title} está en proceso de confirmación de pago!"
+* Modified WooCommerce completed order email heading to: "¡Tu pedido está en proceso de confirmación de pago!"
+* Modified WooCommerce completed order email content to: "Tu pedido está en proceso de confirmación de pago"
+
 = 5.5.0 =
 * Initial release with WordPress 7.1 compatibility
 * PHP 8.2 tested
 
 == Upgrade Notice ==
+
+= 5.5.1 =
+Updated WooCommerce completed order email texts (subject, heading, and content).
 
 = 5.5.0 =
 Initial release with WordPress 7.1 and PHP 8.2 compatibility.
