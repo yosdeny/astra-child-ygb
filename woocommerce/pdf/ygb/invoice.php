@@ -15,8 +15,8 @@ do_action( 'wpo_wcpdf_before_document', $this->type, $this->order );
 $order_status    = $this->order->get_status();
 $is_pre_invoice  = in_array( $order_status, array( 'pending', 'on-hold', 'processing' ), true );
 
-$doc_title       = $is_pre_invoice ? __( 'PRE-FACTURA', 'astra' ) : __( 'FACTURA', 'woocommerce-pdf-invoices-packing-slips' );
-$number_label    = $is_pre_invoice ? __( 'No. Pre-Factura:', 'astra' ) : __( 'No. Factura:', 'astra' );
+$doc_title       = $is_pre_invoice ? __( 'PREFACTURA', 'astra' ) : __( 'FACTURA', 'woocommerce-pdf-invoices-packing-slips' );
+$number_label    = $is_pre_invoice ? __( 'No. PreFactura:', 'astra' ) : __( 'No. Factura:', 'astra' );
 /* ------------------------------------------------------------------ */
 
 /* Detecta si el pedido contiene productos de la categoría "combustibles" */
@@ -49,6 +49,7 @@ $billing_rows = array(
 /* La fila "Recogida" solo se añade si hay combustibles en la factura */
 if ( $has_combustibles ) {
 	$billing_rows[ __( 'Recogida:', 'astra' ) ] = __( 'Servi Gloriari. Circunvalación Sur Extremo Oeste, municipio y provincia de Ciego de Ávila', 'astra' );
+	$billing_rows[ __( 'Nota:', 'astra' ) ] = __( '¡Tu pedido está en proceso de confirmación de pago!', 'astra' );
 }
 ?>
 
