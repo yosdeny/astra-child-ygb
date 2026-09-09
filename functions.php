@@ -47,3 +47,18 @@ function cambiar_texto_pedido_completado_wc( $translated, $text, $domain ) {
 
     return $translated;
 }
+
+// Cambiar el asunto del correo para pedido completado
+add_filter( 'woocommerce_email_subject_customer_completed_order', 'cambiar_asunto_pedido_completado', 10, 2 );
+
+function cambiar_asunto_pedido_completado( $subject, $order ) {
+    $site_title = get_bloginfo( 'name' );
+    return '¡Tu pedido en ' . $site_title . ' está en proceso de confirmación de pago!';
+}
+
+// Cambiar el encabezado del correo para pedido completado
+add_filter( 'woocommerce_email_heading_customer_completed_order', 'cambiar_encabezado_pedido_completado', 10, 2 );
+
+function cambiar_encabezado_pedido_completado( $heading, $order ) {
+    return '¡Tu pedido está en proceso de confirmación de pago!';
+}
