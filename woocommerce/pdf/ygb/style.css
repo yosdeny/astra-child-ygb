@@ -110,6 +110,13 @@ table.billing-details td {
 	color: #333;
 }
 
+/* Estilo especial para la fila de Nota en pre-facturas */
+table.billing-details tr:nth-last-child(1) td:last-child,
+table.billing-details td.note-value {
+	font-weight: bold;
+	font-size: 12px;
+}
+
 /* ---------- Tabla de productos ---------- */
 table.order-data {
 	width: 100%;
