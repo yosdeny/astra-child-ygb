@@ -103,7 +103,7 @@ if ( $is_pre_invoice ) {
 				<?php if ( '' !== trim( (string) $value ) ) : ?>
 				<tr>
 					<th><?php echo esc_html( $label ); ?></th>
-					<td><?php echo esc_html( $value ); ?></td>
+					<td class="<?php echo ( __( 'Nota:', 'astra' ) === $label ) ? 'note-value' : ''; ?>"><?php echo esc_html( $value ); ?></td>
 				</tr>
 				<?php endif; ?>
 			<?php endforeach; ?>

@@ -1,1 +1,28 @@
-Nothing should be ignored since only a source/config file (`readme.txt`) was modified and there are no build artifacts, dependencies, or temp files in the changes.
+```gitignore
+# Dependencies
+node_modules/
+vendor/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.pyc
+__pycache__/
+*.tmp
+```
