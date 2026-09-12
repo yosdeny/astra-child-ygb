@@ -1,8 +1,7 @@
 <?php
 /**
  * Plantilla de factura / pre-factura - formato SERVI Gloriari
- * Título dinámico: PRE-FACTURA si el pedido está en estados iniciales,
- *                  FACTURA en cualquier otro estado.
+ * MODIFICADO: Siempre muestra PREFACTURA independientemente del estado del pedido
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -10,13 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 do_action( 'wpo_wcpdf_before_document', $this->type, $this->order );
 
 /* ------------------------------------------------------------------
-   DETECCIÓN DE TÍTULO DINÁMICO
+   DETECCIÓN DE TÍTULO DINÁMICO - MODIFICADO PARA SIEMPRE MOSTRAR PREFACTURA
    ------------------------------------------------------------------ */
-$order_status    = $this->order->get_status();
-$is_pre_invoice  = in_array( $order_status, array( 'pending', 'on-hold', 'processing' ), true );
+// Forzamos que siempre sea prefactura sin importar el estado
+$is_pre_invoice  = true;
 
-$doc_title       = $is_pre_invoice ? __( 'PREFACTURA', 'astra' ) : __( 'FACTURA', 'woocommerce-pdf-invoices-packing-slips' );
-$number_label    = $is_pre_invoice ? __( 'No. PreFactura:', 'astra' ) : __( 'No. Factura:', 'astra' );
+$doc_title       = __( 'PREFACTURA', 'astra' );
+$number_label    = __( 'No. PreFactura:', 'astra' );
 /* ------------------------------------------------------------------ */
 
 /* Detecta si el pedido contiene productos de la categoría "combustibles" */

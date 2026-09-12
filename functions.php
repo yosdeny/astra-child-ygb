@@ -62,3 +62,47 @@ add_filter( 'woocommerce_email_heading_customer_completed_order', 'cambiar_encab
 function cambiar_encabezado_pedido_completado( $heading, $order ) {
     return '¡Tu pedido está en proceso de confirmación de pago!';
 }
+
+// =================================================================
+// SOLUCIÓN PARA EL AGUJERO DE FACTURAS EN ESTADO COMPLETADO
+// =================================================================
+
+// 1. Cambiar visualmente el estado "Completado" a "Prefactura" en todas las vistas
+add_filter( 'woocommerce_order_status_label', 'custom_change_completed_label_to_prefactura', 10, 1 );
+function custom_change_completed_label_to_prefactura( $label ) {
+    if ( $label === 'Completed' || $label === 'Completado' ) {
+        return 'Prefactura';
+    }
+    return $label;
+}
+
+// 2. Cambiar el nombre del estado completado en el admin y frontend
+add_filter( 'wc_order_statuses', 'custom_rename_completed_status', 10, 1 );
+function custom_rename_completed_status( $statuses ) {
+    if ( isset( $statuses['wc-completed'] ) ) {
+        $statuses['wc-completed'] = __( 'Prefactura', 'woocommerce' );
+    }
+    return $statuses;
+}
+
+// 3. Cambiar texto del botón "Ver Factura" a "Ver Prefactura" en frontend
+add_filter( 'my_account_my_orders_actions', 'change_invoice_button_text_frontend', 10, 2 );
+function change_invoice_button_text_frontend( $actions, $order ) {
+    if ( $order->has_status( 'completed' ) ) {
+        foreach ( $actions as $key => $action ) {
+            if ( strpos( $action['name'], 'Factura' ) !== false || strpos( $action['name'], 'Invoice' ) !== false ) {
+                $actions[$key]['name'] = 'Ver Prefactura';
+            }
+        }
+    }
+    return $actions;
+}
+
+// 4. Forzar que siempre se use el título PREFACTURA independientemente del estado
+add_filter( 'wpo_wcpdf_document_title', 'force_prefactura_title_always', 10, 3 );
+function force_prefactura_title_always( $title, $document_type, $order ) {
+    if ( $document_type === 'invoice' ) {
+        return __( 'PREFACTURA', 'astra' );
+    }
+    return $title;
+}
