@@ -99,9 +99,16 @@ function change_invoice_button_text_frontend( $actions, $order ) {
 }
 
 // 4. Forzar que siempre se use el título PREFACTURA independientemente del estado
-add_filter( 'wpo_wcpdf_document_title', 'force_prefactura_title_always', 10, 3 );
-function force_prefactura_title_always( $title, $document_type, $order ) {
-    if ( $document_type === 'invoice' ) {
+add_filter( 'wpo_wcpdf_document_title', 'force_prefactura_title_always', 10, 2 );
+function force_prefactura_title_always( $title, $document = null ) {
+    // Si el segundo argumento es un objeto documento, verificar su tipo
+    if ( is_object( $document ) && method_exists( $document, 'get_type' ) ) {
+        if ( $document->get_type() === 'invoice' ) {
+            return __( 'PREFACTURA', 'astra' );
+        }
+    }
+    // También verificar por el título original
+    if ( strpos( $title, 'Factura' ) !== false || strpos( $title, 'Invoice' ) !== false ) {
         return __( 'PREFACTURA', 'astra' );
     }
     return $title;
